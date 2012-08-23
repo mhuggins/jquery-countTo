@@ -16,7 +16,11 @@
 			function updateTimer() {
 				value += increment;
 				loopCount++;
-				$(self).html(value.toFixed(options.decimals));
+				var string_value = value.toFixed(options.decimals);
+				if (options.commas) {
+					string_value = string_value.replace(/\B(?=(?:\d{3})+(?!\d))/g, ",");
+				}
+				$(self).html(string_value);
 				
 				if (typeof(options.onUpdate) == 'function') {
 					options.onUpdate.call(self, value);
@@ -40,6 +44,7 @@
 		speed: 1000,  // how long it should take to count between the target numbers
 		refreshInterval: 100,  // how often the element should be updated
 		decimals: 0,  // the number of decimal places to show
+		commas: false, // if you want fancy formatting with commas
 		onUpdate: null,  // callback method for every time the element is updated,
 		onComplete: null,  // callback method for when the element finishes updating
 	};
