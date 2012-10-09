@@ -41,6 +41,6 @@
 		refreshInterval: 100,  // how often the element should be updated
 		decimals: 0,  // the number of decimal places to show
 		onUpdate: null,  // callback method for every time the element is updated,
-		onComplete: null,  // callback method for when the element finishes updating
+		onComplete: null  // callback method for when the element finishes updating
 	};
 }(jQuery));
