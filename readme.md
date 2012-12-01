@@ -23,6 +23,8 @@ A more detailed example that demonstrates all possible options being used is as 
             from: 50,
             to: 2500,
             speed: 1000,
+            decimals: 2,
+            commas: true,
             refreshInterval: 50,
             onComplete: function(value) {
                 console.debug(this);
@@ -54,6 +56,14 @@ A complete listing of the options that can be passed to the `countTo` method is 
     <td>The number of milliseconds it should take to finish counting.</td>
   </tr>
   <tr>
+    <td><i>decimals</i></td>
+    <td>The number of decimal points to use.</td>
+  </tr>
+  <tr>
+      <td><i>commas</i></td>
+      <td>Whether to show commas in formatted number.</td>
+  </tr>
+  <tr>
     <td><i>refreshInterval</i></td>
     <td>The number of milliseconds updating the count.</td>
   </tr>
@@ -67,6 +77,10 @@ A complete listing of the options that can be passed to the `countTo` method is 
 Created By:
 -----------
 [Matt Huggins](http://www.matthuggins.com)
+
+Modified By:
+------------
+[Andrew Herron](http://www.kritikal.com)
 
 License:
 --------
