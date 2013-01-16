@@ -64,7 +64,7 @@ follows.
             to: 2500,
             speed: 1000,
             refreshInterval: 50,
-            formatting: function (value, options) {
+            formatter: function (value, options) {
                 return value.toFixed(options.decimals);
             },
             onUpdate: function (value) {
