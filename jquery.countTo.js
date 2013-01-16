@@ -19,10 +19,20 @@
 			
 			// references & variables that will change with each update
 			var self = this,
+				$self = $(this),
 				loopCount = 0,
 				value = settings.from,
 				interval = setInterval(updateTimer, settings.refreshInterval);
-			
+			var countToData = $self.data('countTo');
+			if (!countToData) {
+				countToData = {};
+				$self.data('countTo', countToData);
+			}
+			// if an existing interval can be found, clear it first
+			if (countToData.interval) {
+				clearInterval(countToData.interval);
+			}
+			countToData.interval = interval;
 			// initialize the element with the starting value
 			render(value);
 			
@@ -37,6 +47,8 @@
 				}
 				
 				if (loopCount >= loops) {
+					// remove the interval
+					$self.removeData('countTo');
 					clearInterval(interval);
 					value = settings.to;
 					
@@ -48,7 +60,7 @@
 			
 			function render(value) {
 				var formattedValue = settings.formatter.call(self, value, settings);
-				$(self).html(formattedValue);
+				$self.html(formattedValue);
 			}
 		});
 	};
