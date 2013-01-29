@@ -6,8 +6,8 @@
 		return $(this).each(function () {
 			// set options for current element
 			var settings = $.extend({}, options, {
-				from:            parseInt($(this).attr('data-from') || options.from, 10),
-				to:              parseInt($(this).attr('data-to') || options.to, 10),
+				from:            parseFloat($(this).attr('data-from') || options.from, 10),
+				to:              parseFloat($(this).attr('data-to') || options.to, 10),
 				speed:           parseInt($(this).attr('data-speed') || options.speed, 10),
 				refreshInterval: parseInt($(this).attr('data-refresh-interval') || options.refreshInterval, 10),
 				decimals:        parseInt($(this).attr('data-decimals') || options.decimals, 10)
