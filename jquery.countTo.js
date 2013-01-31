@@ -22,17 +22,16 @@
 				$self = $(this),
 				loopCount = 0,
 				value = settings.from,
-				interval = setInterval(updateTimer, settings.refreshInterval);
-			var countToData = $self.data('countTo');
-			if (!countToData) {
-				countToData = {};
-				$self.data('countTo', countToData);
-			}
+				data = $self.data('countTo') || {};
+			
+			$self.data('countTo', data);
+			
 			// if an existing interval can be found, clear it first
-			if (countToData.interval) {
-				clearInterval(countToData.interval);
+			if (data.interval) {
+				clearInterval(data.interval);
 			}
-			countToData.interval = interval;
+			data.interval = setInterval(updateTimer, settings.refreshInterval);
+			
 			// initialize the element with the starting value
 			render(value);
 			
@@ -49,7 +48,7 @@
 				if (loopCount >= loops) {
 					// remove the interval
 					$self.removeData('countTo');
-					clearInterval(interval);
+					clearInterval(data.interval);
 					value = settings.to;
 					
 					if (typeof(settings.onComplete) == 'function') {
