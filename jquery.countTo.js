@@ -1,17 +1,16 @@
 (function ($) {
 	$.fn.countTo = function (options) {
-		// merge the default plugin settings with the custom options
-		options = $.extend({}, $.fn.countTo.defaults, options || {});
+		options = options || {};
 		
 		return $(this).each(function () {
 			// set options for current element
-			var settings = $.extend({}, options, {
-				from:            parseFloat($(this).attr('data-from') || options.from),
-				to:              parseFloat($(this).attr('data-to') || options.to),
-				speed:           parseInt($(this).attr('data-speed') || options.speed, 10),
-				refreshInterval: parseInt($(this).attr('data-refresh-interval') || options.refreshInterval, 10),
-				decimals:        parseInt($(this).attr('data-decimals') || options.decimals, 10)
-			});
+			var settings = $.extend({}, $.fn.countTo.defaults, {
+				from:            $(this).data('from'),
+				to:              $(this).data('to'),
+				speed:           $(this).data('speed'),
+				refreshInterval: $(this).data('refresh-interval'),
+				decimals:        $(this).data('decimals')
+			}, options);
 			
 			// how many times to update the value, and how much to increment the value on each update
 			var loops = Math.ceil(settings.speed / settings.refreshInterval),
