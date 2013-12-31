@@ -15,7 +15,7 @@ Install:
 
 ### With Bower
 
-If you will bower, add that lines your component.json file.
+If you will use bower, add that lines your component.json file.
 
             "jquery-countTo": "latest"
 
