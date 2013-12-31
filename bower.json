@@ -1,0 +1,25 @@
+{
+  "name": "jquery-countTo",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mhuggins/jquery-countTo",
+  "authors": [
+    "Matt Huggins <matt.huggins@gmail.com>"
+  ],
+  "description": "Jquery count plugin",
+  "main": "jquery.countTo.js",
+  "keywords": [
+    "jquery",
+    "count",
+    "countTo",
+    "counter",
+    "timer"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
