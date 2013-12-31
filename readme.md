@@ -9,6 +9,25 @@ Requirements:
 [jQuery countTo](https://github.com/mhuggins/jquery-countTo) requires the
 latest version of [jQuery](http://jquery.com).
 
+
+Install:
+--------
+
+### With Bower
+
+If you will bower, add that lines your component.json file.
+
+            "jquery-countTo": "latest"
+
+And run `bower update` for installation.
+
+If you want use console for install, use this command :
+
+    bower install jquery-countTo -S
+    
+
+
+
 Usage:
 ------
 There are two main approaches to using this plugin: through data attributes on
