@@ -134,6 +134,15 @@ A complete listing of the options that can be passed to the `countTo` method is 
   </tr>
 </table>
 
+Using with a CDN:
+----------------
+
+CDN provided by [jsDelivr CDN](http://www.jsdelivr.com/#!jquery.countto)
+
+```
+<script src="//cdn.jsdelivr.net/jquery.countto/0.1.0/jquery.countTo.min.js"></script>
+```
+ 
 Created By:
 -----------
 [Matt Huggins](http://www.matthuggins.com)
