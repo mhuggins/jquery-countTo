@@ -9,7 +9,9 @@
 				to:              $(this).data('to'),
 				speed:           $(this).data('speed'),
 				refreshInterval: $(this).data('refresh-interval'),
-				decimals:        $(this).data('decimals')
+				decimals:        $(this).data('decimals'),
+				prefix:          $(this).data('prefix'),
+				suffix:          $(this).data('suffix')
 			}, options);
 
 			// how many times to update the value, and how much to increment the value on each update
@@ -69,12 +71,14 @@
 		speed: 1000,           // how long it should take to count between the target numbers
 		refreshInterval: 100,  // how often the element should be updated
 		decimals: 0,           // the number of decimal places to show
+		prefix: '',            // the prefix to appear before the number
+		suffix: '',            // the suffix to appear after the number (and ordinal, if set)
 		formatter: formatter,  // handler for formatting the value before rendering
 		onUpdate: null,        // callback method for every time the element is updated
 		onComplete: null       // callback method for when the element finishes updating
 	};
 
 	function formatter(value, settings) {
-		return value.toFixed(settings.decimals);
+		return settings.prefix + value.toFixed(settings.decimals) + settings.suffix;
 	}
 }(jQuery));
