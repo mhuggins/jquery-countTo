@@ -33,7 +33,9 @@ A more detailed example that demonstrates all possible options being used is as
 follows.
 
     <span class="timer" data-from="0" data-to="100"
-          data-speed="5000" data-refresh-interval="50"></span>
+          data-speed="5000" data-refresh-interval="50"
+          data-prefix="Example:" data-suffix="points"
+          data-with-commas="true" data-ordinals="true"></span>
     
     <script type="text/javascript"><!--
         $('.timer').countTo();
@@ -64,6 +66,19 @@ follows.
             to: 2500,
             speed: 1000,
             refreshInterval: 50,
+            decimals: 2,
+            prefix: 'Example:',
+            suffix: 'points',
+            withCommas: true,
+            ordinal: true,
+            ordinalHandler: function(settings) {
+              if(settings.ordinal !== false) {
+                var s = ["th","st","nd","rd"],
+                v = settings.to % 100;
+                return s[(v-20)%10]||s[v]||s[0];
+              }
+              return '';
+            },
             formatter: function (value, options) {
                 return value.toFixed(options.decimals);
             },
@@ -110,6 +125,41 @@ A complete listing of the options that can be passed to the `countTo` method is 
     <td><i>data-refresh-interval</i></td>
     <td>The number of milliseconds to wait between refreshing the counter.
         <i>(default: 100)</i></td>
+  </tr>
+  <tr>
+    <td><i>decimals</i></td>
+    <td><i>data-decimals</i></td>
+    <td>The number of decimal places.
+        <i>(default: 0)</i></td>
+  </tr>
+  <tr>
+    <td><i>prefix</i></td>
+    <td><i>data-prefix</i></td>
+    <td>The string that will appear before the counter value.
+        <i>(default: '')</i></td>
+  </tr>
+  <tr>
+    <td><i>suffix</i></td>
+    <td><i>data-suffix</i></td>
+    <td>The string that will appear after the counter value (and ordinal, if set).
+        <i>(default: )</i></td>
+  </tr>
+  <tr>
+    <td><i>withCommas</i></td>
+    <td><i>data-withCommas</i></td>
+    <td>If true, all numbers will be formatted with commas (e.g. 1,000 and 3,000,000)
+        <i>(default: false)</i></td>
+  </tr>
+  <tr>
+    <td><i>ordinal</i></td>
+    <td><i>data-ordinal</i></td>
+    <td>If true, all numbers will be eppended with the correct ordinal of the `data-to` value (e.g. 3rd)
+        <i>(default: false)</i></td>
+  </tr>
+  <tr>
+    <td colspan="2"><i>ordinalHandler (settings)</i></td>
+    <td>A handler that is used to determine the correct ordinal of the
+        `data-to` value.</td>
   </tr>
   <tr>
     <td colspan="2"><i>formatter (value, options)</i></td>
