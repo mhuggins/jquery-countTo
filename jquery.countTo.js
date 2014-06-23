@@ -11,7 +11,8 @@
 				refreshInterval: $(this).data('refresh-interval'),
 				decimals:        $(this).data('decimals'),
 				prefix:          $(this).data('prefix'),
-				suffix:          $(this).data('suffix')
+				suffix:          $(this).data('suffix'),
+				withCommas:      $(this).data('with-commas'),
 			}, options);
 
 			// how many times to update the value, and how much to increment the value on each update
@@ -73,12 +74,22 @@
 		decimals: 0,           // the number of decimal places to show
 		prefix: '',            // the prefix to appear before the number
 		suffix: '',            // the suffix to appear after the number (and ordinal, if set)
+		withCommas: false,     // whether the number should show thousand/million commas
 		formatter: formatter,  // handler for formatting the value before rendering
 		onUpdate: null,        // callback method for every time the element is updated
 		onComplete: null       // callback method for when the element finishes updating
 	};
 
+	function numberWithCommas(value, settings) {
+		if(settings.withCommas !== false) {
+			var parts = value.toString().split(".");
+			parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+			return parts.join(".");
+		}
+		return value;
+	}
+
 	function formatter(value, settings) {
-		return settings.prefix + value.toFixed(settings.decimals) + settings.suffix;
+		return settings.prefix + numberWithCommas( value.toFixed(settings.decimals), settings ) + settings.suffix;
 	}
 }(jQuery));
