@@ -13,6 +13,7 @@
 				prefix:          $(this).data('prefix'),
 				suffix:          $(this).data('suffix'),
 				withCommas:      $(this).data('with-commas'),
+				ordinal:         $(this).data('ordinal')
 			}, options);
 
 			// how many times to update the value, and how much to increment the value on each update
@@ -75,10 +76,21 @@
 		prefix: '',            // the prefix to appear before the number
 		suffix: '',            // the suffix to appear after the number (and ordinal, if set)
 		withCommas: false,     // whether the number should show thousand/million commas
+		ordinal: false,                  // whether it should show 1st, 2nd, 3rd and so on
+		ordinalHandler: ordinalHandler,  // handler for formatting the ordinals
 		formatter: formatter,  // handler for formatting the value before rendering
 		onUpdate: null,        // callback method for every time the element is updated
 		onComplete: null       // callback method for when the element finishes updating
 	};
+
+	function ordinalHandler(settings) {
+		if(settings.ordinal !== false) {
+			var s = ["th","st","nd","rd"],
+			v = settings.to % 100;
+			return s[(v-20)%10]||s[v]||s[0];
+		}
+		return '';
+	}
 
 	function numberWithCommas(value, settings) {
 		if(settings.withCommas !== false) {
@@ -90,6 +102,6 @@
 	}
 
 	function formatter(value, settings) {
-		return settings.prefix + numberWithCommas( value.toFixed(settings.decimals), settings ) + settings.suffix;
+		return settings.prefix + numberWithCommas( value.toFixed(settings.decimals), settings ) + settings.suffix + settings.ordinalHandler.call(self, settings);
 	}
 }(jQuery));
