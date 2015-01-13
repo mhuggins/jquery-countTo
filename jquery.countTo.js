@@ -75,6 +75,6 @@
 	};
 
 	function formatter(value, settings) {
-		return value.toFixed(settings.decimals);
+		return +value.toFixed(settings.decimals);
 	}
 }(jQuery));
