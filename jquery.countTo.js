@@ -35,6 +35,15 @@
 			render(value);
 
 			function updateTimer() {
+
+				if (typeof(settings.pauseCheck) == 'function') {
+					var wait = settings.pauseCheck.call(self, value);
+					if(wait)
+					{
+						return;
+					}
+				}
+
 				value += increment;
 				loopCount++;
 
@@ -71,7 +80,8 @@
 		decimals: 0,           // the number of decimal places to show
 		formatter: formatter,  // handler for formatting the value before rendering
 		onUpdate: null,        // callback method for every time the element is updated
-		onComplete: null       // callback method for when the element finishes updating
+		onComplete: null,       // callback method for when the element finishes updating
+		pauseCheck: null				// callback method to check given condition and pause the count if the condition is true
 	};
 
 	function formatter(value, settings) {
