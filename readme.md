@@ -25,9 +25,9 @@ the values at the time that you are constructing the DOM.
 
     <span class="timer" data-from="25" data-to="75"></span>
     
-    <script type="text/javascript"><!--
-        $('.timer').countTo();
-    //--></script>
+    <script type="text/javascript">
+      $('.timer').countTo();
+    </script>
 
 A more detailed example that demonstrates all possible options being used is as
 follows.
@@ -35,9 +35,9 @@ follows.
     <span class="timer" data-from="0" data-to="100"
           data-speed="5000" data-refresh-interval="50"></span>
     
-    <script type="text/javascript"><!--
-        $('.timer').countTo();
-    //--></script>
+    <script type="text/javascript">
+      $('.timer').countTo();
+    </script>
 
 Refer to the **Options** section below for more info on the various options
 available.
@@ -49,39 +49,40 @@ useful when you don't know the values at the time the DOM is being rendered.
 
     <span class="timer"></span>
     
-    <script type="text/javascript"><!--
-        $('.timer').countTo({from: 0, to: 500});
-    //--></script>
+    <script type="text/javascript">
+      $('.timer').countTo({from: 0, to: 500});
+    </script>
 
 A more detailed example that demonstrates all possible options being used is as
 follows.
 
     <span class="timer"></span>
     
-    <script type="text/javascript"><!--
-        $('.timer').countTo({
-            from: 50,
-            to: 2500,
-            speed: 1000,
-            refreshInterval: 50,
-            formatter: function (value, options) {
-                return value.toFixed(options.decimals);
-            },
-            onUpdate: function (value) {
-                console.debug(this);
-            },
-            onComplete: function (value) {
-                console.debug(this);
-            }
-        });
-    //--></script>
+    <script type="text/javascript">
+      $('.timer').countTo({
+        from: 50,
+        to: 2500,
+        speed: 1000,
+        refreshInterval: 50,
+        formatter: function (value, options) {
+          return value.toFixed(options.decimals);
+        },
+        onUpdate: function (value) {
+          console.debug(this);
+        },
+        onComplete: function (value) {
+          console.debug(this);
+        }
+      });
+    </script>
 
 Refer to the **Options** section below for more info on the various options
 available.
 
 Options:
 --------
-A complete listing of the options that can be passed to the `countTo` method is below.
+A complete listing of the options that can be passed to the `countTo` method is
+below.
 
 <table>
   <tr>
@@ -134,10 +135,36 @@ A complete listing of the options that can be passed to the `countTo` method is 
   </tr>
 </table>
 
+Functions:
+----------
+This plugin also supports functions, primarily for changing state.  Functions are
+called by passing the name as a string to the `countTo` jQuery function, e.g.:
+`$('#timer').countTo('stop')`.
+
+<table>
+  <tr>
+    <td><i>start</i></td>
+    <td>Resumes the timer if it is stopped.</td>
+  </tr>
+  <tr>
+    <td><i>stop</i></td>
+    <td>Stops (pauses) the timer if it is running.</td>
+  </tr>
+  <tr>
+    <td><i>toggle</i></td>
+    <td>Starts or stops the timer based upon its current state.</td>
+  </tr>
+  <tr>
+    <td><i>restart</i></td>
+    <td>Restarts the timer at its initial "from" value.</td>
+  </tr>
+</table>
+
 Created By:
 -----------
-[Matt Huggins](http://www.matthuggins.com)
+[Matt Huggins](http://matthuggins.com)
 
 License:
 --------
-jQuery-countTo is released under the [MIT license](http://www.opensource.org/licenses/MIT).
+jQuery-countTo is released under the
+[MIT license](http://www.opensource.org/licenses/MIT).
