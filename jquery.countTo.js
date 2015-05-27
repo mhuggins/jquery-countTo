@@ -1,4 +1,4 @@
-(function ($) {
+;(function ($) {
 	$.fn.countTo = function (options) {
 		options = options || {};
 
@@ -60,6 +60,17 @@
 				var formattedValue = settings.formatter.call(self, value, settings);
 				$self.text(formattedValue);
 			}
+			
+		});
+	};
+	
+	$.fn.countToDestroy = function() {
+		return $(this).each(function() {
+			var $self = $(this),
+				data = $self.data('countTo');
+				
+			$self.removeData('countTo');
+			clearInterval(data.interval);
 		});
 	};
 
@@ -77,4 +88,6 @@
 	function formatter(value, settings) {
 		return value.toFixed(settings.decimals);
 	}
+	
+	
 }(jQuery));
