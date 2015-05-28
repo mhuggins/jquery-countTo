@@ -1,7 +1,7 @@
 (function ($) {
   var CountTo = function (element, options) {
-    this.$element  = $(element);
-    this.options   = $.extend({}, CountTo.DEFAULTS, this.dataOptions(), options);
+    this.$element = $(element);
+    this.options  = $.extend({}, CountTo.DEFAULTS, this.dataOptions(), options);
     this.init();
   };
 
@@ -104,10 +104,12 @@
     return this.each(function () {
       var $this   = $(this);
       var data    = $this.data('countTo');
+      var init    = !data || typeof(option) === 'object';
       var options = typeof(option) === 'object' ? option : {};
       var method  = typeof(option) === 'string' ? option : 'start';
 
-      if (!data) {
+      if (init) {
+        if (data) data.stop();
         $this.data('countTo', data = new CountTo(this, options));
       }
 
