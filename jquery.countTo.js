@@ -67,7 +67,7 @@
 
   CountTo.prototype.render = function () {
     var formattedValue = this.options.formatter.call(this.$element, this.value, this.options);
-    this.$element.text(formattedValue);
+    this.$element.html(formattedValue);
   };
 
   CountTo.prototype.restart = function () {
