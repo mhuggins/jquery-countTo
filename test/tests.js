@@ -34,7 +34,7 @@ function runTests(element, options) {
       onComplete: function (value) {
         console.log(this);
         ok(true, 'onComplete was called');
-        ok(this[0] == element[0], 'this is the updated dom element');
+        ok(this[0] === element[0], 'this is the updated dom element');
         ok(value === 3, 'value matches data-to');
         ok(this[0].innerText === "3", 'innerText matches data-to');
         start();
@@ -59,7 +59,7 @@ function runTests(element, options) {
         return 'foobar';
       },
       onComplete: function () {
-        ok(this[0].innerText == 'foobar', 'innerText matches formatted value');
+        ok(this[0].innerText === 'foobar', 'innerText matches formatted value');
         start();
       }
     }));
