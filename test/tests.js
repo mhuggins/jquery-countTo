@@ -32,7 +32,6 @@ function runTests(element, options) {
   asyncTest('onComplete is called when counting completes', 4, function () {
     element.countTo($.extend({}, options, {
       onComplete: function (value) {
-        console.log(this);
         ok(true, 'onComplete was called');
         ok(this[0] === element[0], 'this is the updated dom element');
         ok(value === 3, 'value matches data-to');
