@@ -33,9 +33,9 @@ function runTests(element, options) {
     element.countTo($.extend({}, options, {
       onComplete: function (value) {
         ok(true, 'onComplete was called');
-        ok(this == element[0], 'this is the updated dom element');
-        ok(value == 3, 'value matches data-to');
-        ok(this.innerText == 3, 'innerText matches data-to');
+        ok(this[0] === element[0], 'this is the updated dom element');
+        ok(value === 3, 'value matches data-to');
+        ok(this[0].innerText === "3", 'innerText matches data-to');
         start();
       }
     }));
@@ -58,7 +58,7 @@ function runTests(element, options) {
         return 'foobar';
       },
       onComplete: function () {
-        ok(this.innerText == 'foobar', 'innerText matches formatted value');
+        ok(this[0].innerText === 'foobar', 'innerText matches formatted value');
         start();
       }
     }));
