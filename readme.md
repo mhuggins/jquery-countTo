@@ -115,7 +115,7 @@ below.
     <tr>
     <td><i>decimals</i></td>
     <td><i>data-decimals</i></td>
-    <td>The number of of decimal places to show when using the default
+    <td>The number of decimal places to show when using the default
         formatter. <i>(default: 0)</i></td>
   </tr>
   <tr>
