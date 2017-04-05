@@ -112,13 +112,19 @@ below.
     <td>The number of milliseconds to wait between refreshing the counter.
         <i>(default: 100)</i></td>
   </tr>
+    <tr>
+    <td><i>decimals</i></td>
+    <td><i>data-decimals</i></td>
+    <td>The number of of decimal places to show when using the default
+        formatter. <i>(default: 0)</i></td>
+  </tr>
   <tr>
     <td colspan="2"><i>formatter (value, options)</i></td>
     <td>A handler that is used to format the current value before rendering to
         the DOM.  The true current value and options set is passed to the
         function, and it is run in the context of the DOM element.  It must
         return the formatted value. <i>(default:
-        <code>value.toFixed(options.decimal)</code>)</i></td>
+        <code>value.toFixed(options.decimals)</code>)</i></td>
   </tr>
   <tr>
     <td colspan="2"><i>onUpdate (value)</i></td>
