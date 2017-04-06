@@ -1,5 +1,7 @@
 jQuery countTo Plugin
 =====================
+[![CDNJS](https://img.shields.io/cdnjs/v/jquery-countto.svg)](https://cdnjs.com/libraries/jquery-countto)
+
 [jQuery countTo](https://github.com/mhuggins/jquery-countTo) is a
 [jQuery](http://jquery.com) plugin that will count up (or down) to a target
 number at a specified speed, rendered within an HTML DOM element.
